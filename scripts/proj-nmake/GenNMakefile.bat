@@ -1,0 +1,2 @@
+python GenNMakefile.py
+pause
