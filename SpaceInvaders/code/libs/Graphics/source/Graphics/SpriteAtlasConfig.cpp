@@ -27,7 +27,7 @@ bool SpriteAtlasConfig::Load(const std::string& i_confFilePath)
 	}
 	
 	std::getline(inFile, m_textureNam);
-
+	
 	std::string name;
 	Rect r;
 	while ( inFile >>  name >> r.x >> r.y >> r.w >> r.h)
