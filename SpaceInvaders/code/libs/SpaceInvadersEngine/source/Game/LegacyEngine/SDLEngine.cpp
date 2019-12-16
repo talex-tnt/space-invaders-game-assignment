@@ -3,7 +3,32 @@
 SDLEngine::SDLEngine()
 	: m_isRunning(sdl::policy::Initialization::Init())
 {
+	GraphicsProvider::InitGraphics(*this);
+	if (GraphicsProvider::RendererT* renderer = GraphicsProvider::GetRenderer())
+	{
+		/*	m_renderer = std::make_unique<RendererT>(*renderer);
+			if (m_renderer->Init() == false)
+			{
+				std::cerr << "Error: could or init Renderer" << std::endl;
+				return nullptr;
+			}*/
+	}
+	if (const GraphicsProvider::DisplayT* display = GraphicsProvider::GetDisplay())
+	{
+		//m_display = std::make_unique<DisplayT>(*display);
+	}
+	if (const GraphicsProvider::TextureFactoryT* textureFactory = GraphicsProvider::GetTextureFactory())
+	{
+		//m_textureMgr = std::make_unique<TextureMgrT>(*textureFactory);
+		//m_renderer->SetTextureMgr(*m_textureMgr);
+		////
+		//m_textureMgr->CreateTextures(assets::Textures::GetAllTextures());
 
+		//m_spriteAtlasMgr = std::make_unique<SpriteAtlasMgrT>(*m_textureMgr);
+		//m_spriteAtlasMgr->LoadSpriteAtlases(assets::Sprites::Atlases::GetAllAtlases());
+
+		//m_spriteRenderer = std::make_unique<SpriteRendererT>(*m_renderer);
+	}
 }
 
 SDLEngine::~SDLEngine()

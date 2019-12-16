@@ -1,4 +1,4 @@
-#include "SpaceInvadersEngine.h"
+#include <Game/LegacyEngine/SpaceInvadersEngine.h>
 #include "SDLEngine.h"
 
 SpaceInvadersEngine::SpaceInvadersEngine() 

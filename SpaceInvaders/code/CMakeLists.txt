@@ -19,8 +19,6 @@ include_directories(
 
 target_link_libraries(${PROJECT_NAME}
 	${SO_LIBRARIES}
-	SDLSupport
-	Graphics
-	AppEvents
+	SpaceInvadersEngine
 )
 

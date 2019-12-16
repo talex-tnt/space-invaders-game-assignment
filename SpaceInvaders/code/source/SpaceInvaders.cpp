@@ -1,5 +1,5 @@
 //#include "Engine.h"
-#include "LegacyEngine/SpaceInvadersEngine.h"
+#include <Game/LegacyEngine/SpaceInvadersEngine.h>
 
 #include "SpaceInvaders/Game.h"
 #include "SpaceInvaders/GameContext.h"

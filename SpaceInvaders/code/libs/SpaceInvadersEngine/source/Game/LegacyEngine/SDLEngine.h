@@ -2,12 +2,17 @@
 
 #include <SDL/Policy/Initialization.h>
 #include <SDL/Policy/EventDispatch.h>
+#include <SDL/Policy/GraphicsProvider.h>
 #include <AppEvents/IEventHandler.h>
+
+
 
 class SDLEngine 
 	: private sdl::policy::Initialization
 	, private sdl::policy::EventDispatch
 	, private app::events::IEventHandler
+	, private sdl::policy::GraphicsProvider
+
 {
 public:
 	bool Run();
@@ -27,6 +32,8 @@ public:
 	void OnEventDispatchStarted() override;
 	void OnEvent(app::events::EventType i_eventType) override;
 	void OnEvent(const app::events::KeyEvent& i_event) override;
+
+private:
 
 	bool m_isRunning;
 };
