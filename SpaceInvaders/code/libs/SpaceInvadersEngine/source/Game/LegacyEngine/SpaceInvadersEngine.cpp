@@ -1,6 +1,13 @@
 #include <Game/LegacyEngine/SpaceInvadersEngine.h>
 #include "SDLEngine.h"
 
+#include <Game/Graphics/Renderer2D.h>
+#include <Game/Graphics/TextureMgr.h>
+#include <Game/Graphics/TextRenderer.h>
+#include <Game/Graphics/Display.h>
+#include <Game/Graphics/SpriteAtlasProvider.h>
+#include <Game/Graphics/SpriteRenderer.h>
+
 SpaceInvadersEngine::SpaceInvadersEngine() 
 	: m_engine(std::make_unique<SDLEngine>())
 {
@@ -16,17 +23,19 @@ bool SpaceInvadersEngine::Run()
 	return m_engine->Run();
 }
 
-void SpaceInvadersEngine::RenderSprite(Sprite sprite, int x, int y)
+void SpaceInvadersEngine::RenderSprite(Sprite sprite, int x, int y) const 
 {
 }
 
-void SpaceInvadersEngine::RenderText(const char* message, int x, int y)
+void SpaceInvadersEngine::RenderText(const char* message, int x, int y) const
 {
+	using Pos = game::graphics::TextRenderer::Pos;
+	m_engine->GetTextRenderer().RenderText(std::string(message),Pos(static_cast<Pos::value_type>(x), static_cast<Pos::value_type>(y)), FontRowHeight);
 }
 
 double SpaceInvadersEngine::GetElapsedSeconds() const
 {
-	return 0.0;
+	return m_engine->GetClock().GetElaspsedSeconds().count();
 }
 
 SpaceInvadersEngine::PlayerInput SpaceInvadersEngine::GetPlayerInput() const

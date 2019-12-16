@@ -2,7 +2,7 @@
 #include "../Math/Vec2f.h"
 #include "../Utils/Types.h"
 
-struct Engine;
+struct SpaceInvadersEngine;
 
 namespace graphics
 {
@@ -26,7 +26,7 @@ public:
 	const SpriteSize& GetSpriteSize() const { return m_spriteSize; }
 
 public:
-	SpriteRenderer(const Engine& i_engine);
+	SpriteRenderer(const SpaceInvadersEngine& i_engine);
 
 	SpriteRenderer(const SpriteRenderer&) = delete;
 	SpriteRenderer(SpriteRenderer&&) = delete;
@@ -35,7 +35,7 @@ public:
 	SpriteRenderer& operator=(SpriteRenderer&&) = delete;
 
 private:
-	const Engine& m_engine;
+	const SpaceInvadersEngine& m_engine;
 	const SpriteSize m_spriteSize;
 };
 }

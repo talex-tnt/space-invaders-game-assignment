@@ -3,7 +3,7 @@
 #include "../Utils/Types.h"
 #include "../Basic/string.h"
 
-struct Engine;
+struct SpaceInvadersEngine;
 
 namespace graphics
 {
@@ -26,7 +26,7 @@ public:
 	Size GetTextSize(const String& i_text) const;
 
 public:
-	TextRenderer(const Engine& i_engine);
+	TextRenderer(const SpaceInvadersEngine& i_engine);
 
 	TextRenderer(const TextRenderer&) = delete;
 	TextRenderer(TextRenderer&&) = delete;
@@ -35,7 +35,7 @@ public:
 	TextRenderer& operator=(TextRenderer&&) = delete;
 
 private:
-	const Engine& m_engine;
+	const SpaceInvadersEngine& m_engine;
 	const Size m_fontSize;
 };
 }

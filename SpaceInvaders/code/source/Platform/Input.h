@@ -1,7 +1,7 @@
 #pragma  once
 #include "../Math/Vec2f.h"
 
-struct Engine;
+struct SpaceInvadersEngine;
 
 namespace platform
 {
@@ -20,7 +20,7 @@ public:
 	ValueT GetAction(Action i_action) const;
 
 public:
-	Input(const Engine& i_engine);
+	Input(const SpaceInvadersEngine& i_engine);
 
 	Input(const Input&) = delete;
 	Input(Input&&) = delete;
@@ -29,6 +29,6 @@ public:
 	Input& operator=(Input&&) = delete;
 
 private:
-	const Engine& m_engine;
+	const SpaceInvadersEngine& m_engine;
 };
 }

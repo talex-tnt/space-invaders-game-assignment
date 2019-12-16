@@ -1,6 +1,6 @@
 #pragma  once
 
-struct Engine;
+struct SpaceInvadersEngine;
 
 namespace utils
 {
@@ -10,13 +10,13 @@ public:
 	using Seconds = double;
 
 public:
-	Stopwatch(const Engine& i_engine);
+	Stopwatch(const SpaceInvadersEngine& i_engine);
 
 	void Reset();
 	Seconds GetElapsed() const;
 
 private:
-	const Engine& m_engine;
+	const SpaceInvadersEngine& m_engine;
 	Seconds m_timestamp;
 };
 }

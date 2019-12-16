@@ -1,16 +1,8 @@
 #include "TextRenderer.h"
-#include "../Engine.h"
+#include <Game/LegacyEngine/SpaceInvadersEngine.h>
 
 #include <cmath>
 #include <stdio.h> 
-
-namespace
-{
-Engine& GetEngine(const Engine& i_engine)
-{
-	return *const_cast<Engine*>(&i_engine); // #todo: ask why some engine's methods are not const qualified
-}
-}
 
 namespace graphics
 {
@@ -22,21 +14,21 @@ typename std::enable_if<std::is_arithmetic<NumberT>::value>::type
 SPrintFRender(const TextRenderer& i_textRenderer, const TextRenderer::Position& i_po, const TextRenderer::String& i_text, NumberT i_numbers...);
 }
 
-TextRenderer::TextRenderer(const Engine& i_engine) 
-	: m_engine(i_engine), m_fontSize{ Engine::FontWidth, Engine::FontRowHeight }
+TextRenderer::TextRenderer(const SpaceInvadersEngine& i_engine)
+	: m_engine(i_engine), m_fontSize{ SpaceInvadersEngine::FontWidth, SpaceInvadersEngine::FontRowHeight }
 { 
 }
 
 void TextRenderer::Render(const char* i_text, const Position& i_pos) const
 {
-	GetEngine(m_engine).RenderText(i_text,
+	m_engine.RenderText(i_text,
 		static_cast<int>(std::round(i_pos.GetX())),
 		static_cast<int>(std::round(i_pos.GetY())));
 }
 
 void TextRenderer::Render(const String& i_text, const Position& i_pos) const
 {
-	GetEngine(m_engine).RenderText(i_text.c_str(),
+	m_engine.RenderText(i_text.c_str(),
 		static_cast<int>(std::round(i_pos.GetX())),
 		static_cast<int>(std::round(i_pos.GetY())));
 }

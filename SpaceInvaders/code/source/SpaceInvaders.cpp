@@ -1,4 +1,3 @@
-//#include "Engine.h"
 #include <Game/LegacyEngine/SpaceInvadersEngine.h>
 
 #include "SpaceInvaders/Game.h"
@@ -20,23 +19,15 @@ void WaitAndReset(utils::Stopwatch& stopwatch);
 void EngineMain()
 {
 	SpaceInvadersEngine engine;
-	while (engine.Run())
-	{
-
-	};
-#if 0
-	Engine engine;
 	spaceinv::GameContext context(engine);
 	spaceinv::Game game(context);
-
 	utils::Stopwatch stopwatch(engine);
-	while (engine.Start())
+	while (engine.Run())
 	{
 		game.Update(k_targetUpdateTime);
 		WaitAndReset(stopwatch);
 		game.Render();
-	}
-#endif
+	};
 }
 
 namespace

@@ -5,7 +5,7 @@
 #include <Game/Graphics/TextRenderer.h>
 #include <Game/Graphics/Display.h>
 #include <Game/Graphics/SpriteAtlasProvider.h>
-#include "Game/Graphics/SpriteRenderer.h"
+#include <Game/Graphics/SpriteRenderer.h>
 
 #include "../Base/Assets/Fonts.h"
 #include "../Base/Assets/Textures.h"

@@ -4,7 +4,7 @@
 #include "../Platform/Display.h"
 #include "../Platform/Input.h"
 
-struct Engine;
+struct SpaceInvadersEngine;
 
 namespace spaceinv
 {
@@ -17,7 +17,7 @@ public:
 	using Input = ::platform::Input;
 
 public:
-	GameContext(const Engine& i_engine)
+	GameContext(const SpaceInvadersEngine& i_engine)
 		: m_spriteRenderer(i_engine), m_textRenderer(i_engine), m_display(), m_input(i_engine)
 	{ }
 

@@ -25,8 +25,8 @@ struct SpaceInvadersEngine
 	};
 
 	bool Run();
-	void RenderSprite(Sprite sprite, int x, int y);
-	void RenderText(const char* message, int x, int y);
+	void RenderSprite(Sprite sprite, int x, int y) const;
+	void RenderText(const char* message, int x, int y) const;
 
 	PlayerInput GetPlayerInput() const;
 	double GetElapsedSeconds() const;
