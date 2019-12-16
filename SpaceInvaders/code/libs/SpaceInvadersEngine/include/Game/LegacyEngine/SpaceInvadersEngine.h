@@ -30,7 +30,7 @@ struct SpaceInvadersEngine
 
 	PlayerInput GetPlayerInput() const;
 	double GetElapsedSeconds() const;
-	
+	int GetTextSize(const char* message) const;
 	SpaceInvadersEngine();
 	~SpaceInvadersEngine();
 

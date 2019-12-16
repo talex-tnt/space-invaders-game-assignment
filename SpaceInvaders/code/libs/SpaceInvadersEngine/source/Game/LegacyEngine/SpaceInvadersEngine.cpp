@@ -38,6 +38,12 @@ double SpaceInvadersEngine::GetElapsedSeconds() const
 	return m_engine->GetClock().GetElaspsedSeconds().count();
 }
 
+int SpaceInvadersEngine::GetTextSize(const char* message) const
+{
+	//m_engine->GetTextRenderer()
+	return 0;
+}
+
 SpaceInvadersEngine::PlayerInput SpaceInvadersEngine::GetPlayerInput() const
 {
 	PlayerInput input;
