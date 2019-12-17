@@ -30,12 +30,14 @@ struct SpaceInvadersEngine
 	bool Run();
 	void RenderSprite(Sprite sprite, int x, int y) const;
 	void RenderText(const char* message, int x, int y) const;
-
+	struct Size { std::size_t w, h; };
 	PlayerInput GetPlayerInput() const;
 	double GetElapsedSeconds() const;
-	int GetTextSize(const char* message) const;
+	Size GetTextSize(const char* message) const;
+
 	SpaceInvadersEngine();
 	~SpaceInvadersEngine();
+
 private:
 	using SpriteT = game::graphics::SpriteAtlas::Sprite;
 

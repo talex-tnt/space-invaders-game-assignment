@@ -52,10 +52,11 @@ double SpaceInvadersEngine::GetElapsedSeconds() const
 	return m_engine->GetClock().GetElaspsedSeconds().count();
 }
 
-int SpaceInvadersEngine::GetTextSize(const char* message) const
+SpaceInvadersEngine::Size SpaceInvadersEngine::GetTextSize(const char* message) const
 {
-	//m_engine->GetTextRenderer()
-	return 100;
+	using Rect = game::graphics::TextRenderer::Rect;
+	const Rect& rect = m_engine->GetTextRenderer().ComputeTextRect(std::string(message), FontRowHeight);
+	return Size{ static_cast<std::size_t>(std::round(rect.size.x())) , static_cast<std::size_t>(std::round(rect.size.y())) };
 }
 
 SpaceInvadersEngine::PlayerInput SpaceInvadersEngine::GetPlayerInput() const

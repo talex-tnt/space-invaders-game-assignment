@@ -62,6 +62,8 @@ SPrintFRender(const TextRenderer& i_textRenderer, const TextRenderer::Position& 
 
 graphics::Size TextRenderer::GetTextSize(const String& i_text) const
 {
-	return graphics::Size{ i_text.size() * m_fontSize.w, m_fontSize.h };
+	const SpaceInvadersEngine::Size size = m_engine.GetTextSize(i_text.c_str());
+	return graphics::Size{ size.w, size.h };
+	//return graphics::Size{ i_text.size() * m_fontSize.w, m_fontSize.h };
 }
 }

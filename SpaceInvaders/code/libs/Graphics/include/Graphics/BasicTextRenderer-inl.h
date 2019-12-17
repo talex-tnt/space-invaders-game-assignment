@@ -75,7 +75,7 @@ graphics::BasicTextRenderer<
 	using GlyphsRects = typename GlyphsAccessPolicy::Rects;
 	using TextureSize = typename TextureAccessPolicy::TextureSize;
 
-	Rect result;
+	Rect result{0.f, 0.f, 0.f, 0.f};
 	TextureSize textureSize = TextureAccessPolicy::GetTextureSize();
 	const float sf = i_fontSize / GlyphsAccessPolicy::GetGlyphSize();
 	Pos pos{ 0.f , 0.f };
