@@ -16,6 +16,7 @@ namespace game
 		class SpriteRenderer;
 		class TextureMgr;
 		class SpriteAtlasMgr;
+		class SpriteAtlasProvider;
 	}
 }
 
@@ -43,13 +44,14 @@ public:
 	using SpriteRendererT = game::graphics::SpriteRenderer;
 	using TextureMgrT = game::graphics::TextureMgr;
 	using DisplayT = game::graphics::Display;
+	using SpriteAtlasProviderT = game::graphics::SpriteAtlasProvider;
 	using SpriteAtlasMgrT = game::graphics::SpriteAtlasMgr;
 	using ClockT = app::utils::Clock;
 
 	const RendererT& GetRenderer() const { return *m_renderer; }
 	const TextRendererT& GetTextRenderer() const { return *m_textRenderer; }
 	const SpriteRendererT& GetSpriteRenderer() const { return *m_spriteRenderer; }
-	const SpriteAtlasMgrT& GetAtlasMgr() const { return *m_spriteAtlasMgr; }
+	const SpriteAtlasProviderT& GetAtlasProvider() const;
 	const DisplayT& GetDisplay() const { return *m_display; }
 	const Input& GetInput() const;
 	const ClockT& GetClock() const { return m_clock; }

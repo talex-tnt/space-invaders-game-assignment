@@ -58,6 +58,12 @@ SDLEngine::SDLEngine()
 
 SDLEngine::~SDLEngine()
 {
+	m_renderer->EndRendering();
+}
+
+const SDLEngine::SDLEngine::SpriteAtlasProviderT& SDLEngine::GetAtlasProvider() const
+{
+	return *m_spriteAtlasMgr;
 }
 
 const SDLEngine::SDLEngine::Input& SDLEngine::GetInput() const
@@ -108,7 +114,8 @@ void SDLEngine::OnEvent(const app::events::KeyEvent& i_event)
 
 bool SDLEngine::Run()
 {
+	m_renderer->EndRendering();
+	m_renderer->BeginRendering();
 	sdl::policy::EventDispatch::ProcessAndDispatch(*this);
-
 	return m_isRunning;
 }

@@ -7,6 +7,7 @@
 #include <Game/Graphics/Display.h>
 #include <Game/Graphics/SpriteAtlasProvider.h>
 #include <Game/Graphics/SpriteRenderer.h>
+#include "../Base/Assets/Sprites.h"
 
 SpaceInvadersEngine::SpaceInvadersEngine() 
 	: m_engine(std::make_unique<SDLEngine>())
@@ -25,6 +26,12 @@ bool SpaceInvadersEngine::Run()
 
 void SpaceInvadersEngine::RenderSprite(Sprite sprite, int x, int y) const 
 {
+	using Sprites = game::assets::Sprites;
+	using Rect = game::graphics::SpriteRenderer::Rect;
+	using Sprite = game::graphics::SpriteAtlas::Sprite;
+	const Rect rect{ Sprite::Pos{static_cast<float>(x), static_cast<float>(y)}, Sprite::Size{20, 20} };
+	const Sprite spr = m_engine->GetAtlasProvider().GetSpriteAtlas(Sprites::Atlases::k_invaders)->GetSprite(Sprites::k_ship);
+	m_engine->GetSpriteRenderer().Render(rect, spr);
 }
 
 void SpaceInvadersEngine::RenderText(const char* message, int x, int y) const
@@ -41,7 +48,7 @@ double SpaceInvadersEngine::GetElapsedSeconds() const
 int SpaceInvadersEngine::GetTextSize(const char* message) const
 {
 	//m_engine->GetTextRenderer()
-	return 0;
+	return 100;
 }
 
 SpaceInvadersEngine::PlayerInput SpaceInvadersEngine::GetPlayerInput() const
