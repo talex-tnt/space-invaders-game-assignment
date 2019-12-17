@@ -29,10 +29,14 @@ class TextRenderer
 {
 public:
 	using Pos = Math::Vec2f;
+	using Size = Math::Vec2f;
+	struct Rect { Pos pos; Size size; };
+
 	TextRenderer(graphics::Renderer2D& i_renderer, graphics::TextureMgr& i_textureProvider);
 	~TextRenderer();
 	bool Init(const Font& i_font);
 	void RenderText(const std::string& i_text, const Pos& i_pos, float i_fontSize) const;
+	Rect ComputeTextRect(const std::string& i_text, float i_fontSize) const;
 
 public:
 	TextRenderer(const TextRenderer&) = delete;

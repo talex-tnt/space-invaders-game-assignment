@@ -21,6 +21,7 @@ public:
 
 	bool Init(const std::string& i_texturePath, const std::string& i_configFilePath);
 	void RenderText(const std::string& i_text, const Pos& i_pos, float i_fontSize) const;
+	Rect ComputeTextRect(const std::string& i_text, float i_fontSize) const;
 
 public:
 	BasicTextRenderer(const BasicTextRenderer&) = delete;

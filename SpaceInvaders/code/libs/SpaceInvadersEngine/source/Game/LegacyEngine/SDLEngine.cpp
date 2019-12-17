@@ -54,6 +54,17 @@ SDLEngine::SDLEngine(const std::string& i_windowTitle, std::int32_t i_width, std
 
 		m_spriteRenderer = std::make_unique<SpriteRendererT>(*m_renderer);
 	}
+	assert(m_renderer);
+	assert(m_textureMgr);
+	assert(m_display);
+	assert(m_spriteAtlasMgr);
+	assert(m_spriteRenderer);
+
+	m_textRenderer = std::make_unique<TextRendererT>(*m_renderer, *m_textureMgr);
+	if (m_textRenderer->Init(game::assets::Fonts::k_unifont) == false)
+	{
+		std::cerr << "Error: could or init TextRenderer" << std::endl;
+	}
 }
 
 SDLEngine::~SDLEngine()

@@ -83,7 +83,13 @@ bool TextRenderer::Init(const Font& i_font)
 
 void TextRenderer::RenderText(const std::string& i_text, const Pos& i_pos, float i_fontSize) const
 {
-	//m_textRenderer->RenderText(i_text, TextRendererT::Pos { i_pos.x(), i_pos.y() }, i_fontSize);
+	m_textRenderer->RenderText(i_text, TextRendererT::Pos { i_pos.x(), i_pos.y() }, i_fontSize);
+}
+
+TextRenderer::Rect TextRenderer::ComputeTextRect(const std::string& i_text, float i_fontSize) const
+{
+	TextRendererT::Rect r = m_textRenderer->ComputeTextRect(i_text, i_fontSize);
+	return Rect{ Pos{r.x, r.y}, Size{r.w, r.h} };
 }
 
 }
