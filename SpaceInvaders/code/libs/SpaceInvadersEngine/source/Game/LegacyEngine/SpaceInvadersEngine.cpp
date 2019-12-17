@@ -44,7 +44,7 @@ void SpaceInvadersEngine::RenderText(const char* message, int x, int y) const
 {
 	using Pos = game::graphics::TextRenderer::Pos;
 	Pos pos{ static_cast<float>(x), static_cast<float>(y) };
-	m_engine->GetTextRenderer().RenderText(std::string(message), pos), FontRowHeight);
+	m_engine->GetTextRenderer().RenderText(std::string(message), pos, FontRowHeight);
 }
 
 double SpaceInvadersEngine::GetElapsedSeconds() const
