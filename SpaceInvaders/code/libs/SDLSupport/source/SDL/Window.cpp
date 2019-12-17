@@ -14,14 +14,14 @@
 namespace sdl
 {
 
-Window::Window(std::uint32_t i_flags)
+Window::Window(const std::string& title, std::int32_t width, std::int32_t height, std::uint32_t i_flags)
 	: m_window(
 		SDL_CreateWindow(
-			"SDL2Test",
+			title.c_str(),
 			SDL_WINDOWPOS_UNDEFINED,
 			SDL_WINDOWPOS_UNDEFINED,
-			1280,
-			1024,
+			width,
+			height,
 			i_flags
 		),
 		[] (SDL_Window* win) { SDL_DestroyWindow(win); })

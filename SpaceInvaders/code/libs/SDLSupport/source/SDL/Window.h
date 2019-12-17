@@ -12,7 +12,7 @@ namespace sdl
 class Window
 {
 public:
-	Window(std::uint32_t i_flags = 0u);
+	Window(const std::string& title, std::int32_t width, std::int32_t height, std::uint32_t i_flags = 0u);
 	~Window();
 
 	Window(const Window&) = delete;

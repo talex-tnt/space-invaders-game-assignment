@@ -30,7 +30,7 @@ class SDLEngine
 public:
 	bool Run();
 	
-	SDLEngine();
+	SDLEngine(const std::string& i_windowTitle, std::int32_t i_width, std::int32_t i_height);
 	~SDLEngine();
 
 	struct Input

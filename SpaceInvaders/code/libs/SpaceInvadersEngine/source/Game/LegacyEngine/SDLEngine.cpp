@@ -26,8 +26,8 @@ public:
 }
 }
 
-SDLEngine::SDLEngine()
-	: m_isRunning(sdl::policy::Initialization::Init())
+SDLEngine::SDLEngine(const std::string& i_windowTitle, std::int32_t i_width, std::int32_t i_height)
+	: m_isRunning(sdl::policy::Initialization::Init(i_windowTitle, i_width, i_height))
 {
 	GraphicsProvider::InitGraphics(*this);
 	if (GraphicsProvider::RendererT* renderer = GraphicsProvider::GetRenderer())

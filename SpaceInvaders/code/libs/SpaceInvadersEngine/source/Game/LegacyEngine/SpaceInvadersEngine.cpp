@@ -11,7 +11,7 @@
 #include <AppUtils/Enum.h>
 
 SpaceInvadersEngine::SpaceInvadersEngine() 
-	: m_engine(std::make_unique<SDLEngine>())
+	: m_engine(std::make_unique<SDLEngine>("Space Invaders", CanvasWidth, CanvasHeight))
 {
 	using Sprites = game::assets::Sprites;
 	using Enum = app::utils::Enum;
@@ -43,7 +43,8 @@ void SpaceInvadersEngine::RenderSprite(Sprite sprite, int x, int y) const
 void SpaceInvadersEngine::RenderText(const char* message, int x, int y) const
 {
 	using Pos = game::graphics::TextRenderer::Pos;
-	m_engine->GetTextRenderer().RenderText(std::string(message),Pos(static_cast<Pos::value_type>(x), static_cast<Pos::value_type>(y)), FontRowHeight);
+	Pos pos{ static_cast<float>(x), static_cast<float>(y) };
+	m_engine->GetTextRenderer().RenderText(std::string(message), pos), FontRowHeight);
 }
 
 double SpaceInvadersEngine::GetElapsedSeconds() const

@@ -14,7 +14,7 @@ class Initialization
 public:
 	using WindowT = Window;
 
-	bool Init();
+	bool Init(const std::string& i_windowTitle, std::int32_t i_width, std::int32_t i_height);
 	WindowT* GetWindow();
 	const WindowT* GetWindow() const;
 

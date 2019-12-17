@@ -25,7 +25,7 @@ Initialization::~Initialization()
 	SDL_Quit();
 }
 
-bool Initialization::Init()
+bool Initialization::Init(const std::string& i_windowTitle, std::int32_t i_width, std::int32_t i_height)
 {
 	bool initialized = false;
 	if ( SDL_Init(SDL_INIT_VIDEO) < 0 )
@@ -34,7 +34,7 @@ bool Initialization::Init()
 	}
 	else
 	{
-		m_window = std::make_unique<sdl::Window>();
+		m_window = std::make_unique<sdl::Window>(i_windowTitle, i_width, i_height);
 
 		if ( m_window && m_window->IsInitialized() )
 		{
