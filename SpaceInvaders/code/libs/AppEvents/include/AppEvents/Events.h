@@ -1,7 +1,7 @@
 #pragma once
 #include <memory>
 #include <string>
-#include "Enum.h"
+#include <AppUtils/Enum.h>
 
 namespace app
 {

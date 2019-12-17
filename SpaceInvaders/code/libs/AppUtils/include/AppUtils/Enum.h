@@ -33,7 +33,7 @@ public:
 		{
 			return i_array[ i ];
 		}
-		return 0;
+		return ValueT{};
 	}
 
 	template<class E, class ValueT, std::size_t N>
@@ -44,7 +44,7 @@ public:
 		{
 			return i_array[ i ] = i_v;
 		}
-		return 0;
+		return ValueT{};
 	}
 };
 

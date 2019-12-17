@@ -8,11 +8,18 @@
 #include <Game/Graphics/SpriteAtlasProvider.h>
 #include <Game/Graphics/SpriteRenderer.h>
 #include "../Base/Assets/Sprites.h"
+#include <AppUtils/Enum.h>
 
 SpaceInvadersEngine::SpaceInvadersEngine() 
 	: m_engine(std::make_unique<SDLEngine>())
 {
-
+	using Sprites = game::assets::Sprites;
+	using Enum = app::utils::Enum;
+	Enum::SetArrayValue(m_sprites, Sprite::Player, m_engine->GetAtlasProvider().GetSpriteAtlas(Sprites::Atlases::k_invaders)->GetSprite(Sprites::k_ship));
+	Enum::SetArrayValue(m_sprites, Sprite::Enemy1, m_engine->GetAtlasProvider().GetSpriteAtlas(Sprites::Atlases::k_invaders)->GetSprite(Sprites::k_invader01));
+	Enum::SetArrayValue(m_sprites, Sprite::Enemy2, m_engine->GetAtlasProvider().GetSpriteAtlas(Sprites::Atlases::k_invaders)->GetSprite(Sprites::k_invader02));
+	Enum::SetArrayValue(m_sprites, Sprite::Rocket, m_engine->GetAtlasProvider().GetSpriteAtlas(Sprites::Atlases::k_invaders)->GetSprite(Sprites::k_projectile));
+	Enum::SetArrayValue(m_sprites, Sprite::Bomb, m_engine->GetAtlasProvider().GetSpriteAtlas(Sprites::Atlases::k_invaders)->GetSprite(Sprites::k_explosion));
 }
 
 SpaceInvadersEngine::~SpaceInvadersEngine()
@@ -26,12 +33,11 @@ bool SpaceInvadersEngine::Run()
 
 void SpaceInvadersEngine::RenderSprite(Sprite sprite, int x, int y) const 
 {
-	using Sprites = game::assets::Sprites;
 	using Rect = game::graphics::SpriteRenderer::Rect;
-	using Sprite = game::graphics::SpriteAtlas::Sprite;
-	const Rect rect{ Sprite::Pos{static_cast<float>(x), static_cast<float>(y)}, Sprite::Size{20, 20} };
-	const Sprite spr = m_engine->GetAtlasProvider().GetSpriteAtlas(Sprites::Atlases::k_invaders)->GetSprite(Sprites::k_ship);
-	m_engine->GetSpriteRenderer().Render(rect, spr);
+	SpriteT::Pos pos{ static_cast<float>(x), static_cast<float>(y) };
+	const Rect rect{ pos , m_spriteSize };
+	using Enum = app::utils::Enum;
+	m_engine->GetSpriteRenderer().Render(rect, Enum::GetArrayValue(m_sprites, sprite));
 }
 
 void SpaceInvadersEngine::RenderText(const char* message, int x, int y) const

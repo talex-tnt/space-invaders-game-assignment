@@ -1,5 +1,8 @@
 #pragma once
 #include <memory>
+#include <array>
+
+#include <Game/Graphics/SpriteAtlasProvider.h>
 
 class SDLEngine;
 struct SpaceInvadersEngine 
@@ -33,9 +36,12 @@ struct SpaceInvadersEngine
 	int GetTextSize(const char* message) const;
 	SpaceInvadersEngine();
 	~SpaceInvadersEngine();
+private:
+	using SpriteT = game::graphics::SpriteAtlas::Sprite;
 
 private:
 	std::unique_ptr<SDLEngine> m_engine;
-
+	std::array<SpriteT, 5> m_sprites;
+	SpriteT::Size m_spriteSize{ SpriteSize, SpriteSize };
 };
 
