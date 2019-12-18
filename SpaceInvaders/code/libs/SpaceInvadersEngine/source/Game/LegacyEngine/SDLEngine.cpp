@@ -28,6 +28,7 @@ public:
 
 SDLEngine::SDLEngine(const std::string& i_windowTitle, std::int32_t i_width, std::int32_t i_height)
 	: m_isRunning(sdl::policy::Initialization::Init(i_windowTitle, i_width, i_height))
+	, m_input{ false, false, false }
 {
 	m_timer.Reset();
 
@@ -85,9 +86,7 @@ const SDLEngine::SDLEngine::Input& SDLEngine::GetInput() const
 }
 
 void SDLEngine::OnEventDispatchStarted()
-{
-	m_input = Input{false, false, false};
-}
+{}
 
 void SDLEngine::OnEvent(app::events::EventType i_eventType)
 {
@@ -99,7 +98,7 @@ void SDLEngine::OnEvent(app::events::EventType i_eventType)
 
 void SDLEngine::OnEvent(const app::events::KeyEvent& i_event)
 {
-	const bool isPressed = i_event.GetState() == app::events::KeyEvent::EventState::k_up;
+	const bool isPressed = i_event.GetState() == app::events::KeyEvent::EventState::k_down;
 	switch (i_event.GetKeycode())
 	{
 	case app::events::KeyEvent::KeycodeType::k_esc:
