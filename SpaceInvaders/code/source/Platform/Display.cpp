@@ -1,5 +1,5 @@
 #include "Display.h"
-#include "../Engine.h"
+#include <Game/LegacyEngine/SpaceInvadersEngine.h>
 
 namespace platform
 {
@@ -7,8 +7,8 @@ namespace platform
 platform::Display::Size Display::GetSize() const
 {
 	return Size{
-		static_cast<Size::ValueT>(Engine::CanvasWidth),
-		static_cast<Size::ValueT>(Engine::CanvasHeight) 
+		static_cast<Size::ValueT>(SpaceInvadersEngine::CanvasWidth),
+		static_cast<Size::ValueT>(SpaceInvadersEngine::CanvasHeight)
 	};
 }
 
