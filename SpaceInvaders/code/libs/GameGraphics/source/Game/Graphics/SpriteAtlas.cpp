@@ -54,7 +54,7 @@ game::graphics::SpriteAtlas::Sprite SpriteAtlas::GetSprite(const std::string& i_
 			static_cast< Sprite::Pos::value_type >( r.y )
 		}, Sprite::Size{
 			static_cast< Sprite::Size::value_type >( r.w ),
-			static_cast< Sprite::Size::value_type >( r.w )
+			static_cast< Sprite::Size::value_type >( r.h )
 		}} , m_textureId };
 	}
 	else
