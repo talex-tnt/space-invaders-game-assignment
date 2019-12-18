@@ -49,7 +49,7 @@ void SpaceInvadersEngine::RenderText(const char* message, int x, int y) const
 
 double SpaceInvadersEngine::GetElapsedSeconds() const
 {
-	return m_engine->GetClock().GetElaspsedSeconds().count();
+	return m_engine->GetElapsedSeconds().count();
 }
 
 SpaceInvadersEngine::Size SpaceInvadersEngine::GetTextSize(const char* message) const

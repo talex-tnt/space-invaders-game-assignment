@@ -1,0 +1,13 @@
+OperatingSystem := $(shell uname)
+ifeq ($(OperatingSystem), Darwin)
+	LibSDL := -framework SDL2
+else
+	LibSDL := -lSDL2
+endif
+
+all:
+	cc -std=c++11 SpaceInvaders.cpp Engine.cpp $(LibSDL) -fno-exceptions -o SpaceInvaders
+
+clean:
+	-rm SpaceInvaders
+

@@ -3,8 +3,8 @@
 #include <SDL/Policy/Initialization.h>
 #include <SDL/Policy/EventDispatch.h>
 #include <SDL/Policy/GraphicsProvider.h>
+#include <SDL/Timer.h>
 #include <AppEvents/IEventHandler.h>
-#include <AppUtils/Clock.h>
 
 namespace game
 {
@@ -46,7 +46,8 @@ public:
 	using DisplayT = game::graphics::Display;
 	using SpriteAtlasProviderT = game::graphics::SpriteAtlasProvider;
 	using SpriteAtlasMgrT = game::graphics::SpriteAtlasMgr;
-	using ClockT = app::utils::Clock;
+	using TimerT = sdl::Timer;
+	using SecT = sdl::Timer::SecT;
 
 	const RendererT& GetRenderer() const { return *m_renderer; }
 	const TextRendererT& GetTextRenderer() const { return *m_textRenderer; }
@@ -54,7 +55,7 @@ public:
 	const SpriteAtlasProviderT& GetAtlasProvider() const;
 	const DisplayT& GetDisplay() const { return *m_display; }
 	const Input& GetInput() const;
-	const ClockT& GetClock() const { return m_clock; }
+	const SecT GetElapsedSeconds() const { return m_timer.GetElapsed(); }
 
 public:
 	void OnEventDispatchStarted() override;
@@ -68,7 +69,7 @@ private:
 	std::unique_ptr<DisplayT> m_display;
 	std::unique_ptr<TextRendererT> m_textRenderer;
 	std::unique_ptr<SpriteRendererT> m_spriteRenderer;
-	app::utils::Clock m_clock;
+	sdl::Timer m_timer;
 
 	bool m_isRunning;
 };

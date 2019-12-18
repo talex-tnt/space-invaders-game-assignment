@@ -29,6 +29,8 @@ public:
 SDLEngine::SDLEngine(const std::string& i_windowTitle, std::int32_t i_width, std::int32_t i_height)
 	: m_isRunning(sdl::policy::Initialization::Init(i_windowTitle, i_width, i_height))
 {
+	m_timer.Reset();
+
 	GraphicsProvider::InitGraphics(*this);
 	if (GraphicsProvider::RendererT* renderer = GraphicsProvider::GetRenderer())
 	{
@@ -97,27 +99,27 @@ void SDLEngine::OnEvent(app::events::EventType i_eventType)
 
 void SDLEngine::OnEvent(const app::events::KeyEvent& i_event)
 {
+	const bool isPressed = i_event.GetState() == app::events::KeyEvent::EventState::k_up;
 	switch (i_event.GetKeycode())
 	{
 	case app::events::KeyEvent::KeycodeType::k_esc:
 		m_isRunning = false;
 		break;
 	case app::events::KeyEvent::KeycodeType::k_space:
-		m_input.space = true;
+		m_input.space = isPressed;
 		break;
 	case app::events::KeyEvent::KeycodeType::k_left:
-		m_input.left = true;
+		m_input.left = isPressed;
 		break;
 	case app::events::KeyEvent::KeycodeType::k_right:
-		m_input.right = true;
+		m_input.right = isPressed;
 		break;
 	case app::events::KeyEvent::KeycodeType::k_up:
-		m_input.up = true;
+		m_input.up = isPressed;
 		break;
 	case app::events::KeyEvent::KeycodeType::k_down:
-		m_input.down = true;
+		m_input.down = isPressed;
 		break;
-
 	default:
 		break;
 	}
