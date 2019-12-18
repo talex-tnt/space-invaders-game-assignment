@@ -44,6 +44,5 @@ private:
 private:
 	std::unique_ptr<SDLEngine> m_engine;
 	std::array<SpriteT, 5> m_sprites;
-	SpriteT::Size m_spriteSize{ SpriteSize, SpriteSize };
 };
 

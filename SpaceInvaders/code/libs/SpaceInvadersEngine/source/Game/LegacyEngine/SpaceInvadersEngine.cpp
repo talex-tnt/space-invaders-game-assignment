@@ -34,10 +34,25 @@ bool SpaceInvadersEngine::Run()
 void SpaceInvadersEngine::RenderSprite(Sprite sprite, int x, int y) const 
 {
 	using Rect = game::graphics::SpriteRenderer::Rect;
-	SpriteT::Pos pos{ static_cast<float>(x), static_cast<float>(y) };
-	const Rect rect{ pos , m_spriteSize };
 	using Enum = app::utils::Enum;
-	m_engine->GetSpriteRenderer().Render(rect, Enum::GetArrayValue(m_sprites, sprite));
+	const SpriteT& spr = Enum::GetArrayValue(m_sprites, sprite);
+	SpriteT::Size spriteSize{ static_cast<float>(SpriteSize),  static_cast<float>(SpriteSize)};
+	SpriteT::Pos pos{ static_cast<float>(x), static_cast<float>(y) };
+	if (spr.m_rect.size.x() < spr.m_rect.size.y())
+	{
+		const float ratio = spr.m_rect.size.x() / spr.m_rect.size.y();
+		spriteSize[0] *= ratio;
+		pos[0] += (SpriteSize - spriteSize[0]) * 0.5f;
+	} 
+	else
+	{
+		const float ratio = spr.m_rect.size.y() / spr.m_rect.size.x();
+		spriteSize[1] *= ratio;
+		pos[1] += (SpriteSize - spriteSize[1]) * 0.5f;
+
+	}
+	const Rect rect{ pos , spriteSize };
+	m_engine->GetSpriteRenderer().Render(rect, spr);
 }
 
 void SpaceInvadersEngine::RenderText(const char* message, int x, int y) const
