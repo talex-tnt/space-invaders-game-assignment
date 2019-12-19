@@ -1,0 +1,3 @@
+[submodule "SpaceInvaders/code/sdl-engine-libs"]
+	path = SpaceInvaders/code/sdl-engine-libs
+	url = https://github.com/talex-tnt/sdl-engine-libs.git

@@ -11,7 +11,7 @@ add_executable(${PROJECT_NAME} WIN32
 	${SOURCE_FILES}
 )
 
-add_subdirectory(libs)
+add_subdirectory(sdl-engine-libs)
 
 include_directories(
 	${PROJECT_SOURCE_DIR}/code/
