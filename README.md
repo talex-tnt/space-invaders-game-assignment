@@ -36,9 +36,10 @@ Create a **Space Invaders** game clone in C++ by using the supplied library `sdl
 
   - Low CPU clock frequency. 
   - Expensive cache misses and branches (branch prediction might not be supported at all).
-  - Limited Memory budget (virtual memory not available). 
+  - Limited memory budget (virtual memory not available). 
   - Very expensive memory allocations.
-  - Some of these restrictions might be released in the future.
+  
+  Some of these restrictions might be released in the future.
 
 - ### **Further constraints**
   - Exception might be disabled
