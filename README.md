@@ -48,7 +48,7 @@ Create a **Space Invaders** game clone in C++ by using the supplied library `sdl
   Set yourself a week (~20 hours) to work on this assignment as you would work on some task given to you in a working environment.
   
   
-  Add as many files as you need to the folder [`space-invaders\SpaceInvaders\code\source`](https://github.com/talex-tnt/space-invaders-game-assignment/tree/master/SpaceInvaders/code/source). 
+  Add as many files as you need inside the folder [`space-invaders\SpaceInvaders\code\source\`](https://github.com/talex-tnt/space-invaders-game-assignment/tree/master/SpaceInvaders/code/source). 
   
   Please do not touch any another file.
 
