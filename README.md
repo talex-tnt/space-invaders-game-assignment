@@ -23,7 +23,7 @@ Create a **Space Invaders** game clone in C++ by using the supplied library `sdl
     They can destroy aliens if hit but they'll get destroyed as well.
 
   * ### *Aliens fleet*
-    A fleet of aliens appears at the top of the screen; it moves left to right until the rightmost alien reaches the screen edge. It then moves down a little and then starts moving back to the right edge. Once the right edge is reached, it goes downward again; then left and so forth until the **bottom edge of the screen is reached** or an **alien collides with the ship**.
+    A fleet of aliens appears at the top of the screen; it moves left to right until the rightmost alien reaches the screen edge. It then moves down a little and then starts moving back to the right edge. Once the right edge is reached, it goes downward again; then left and so forth until the **bottom edge of the screen** or an **alien collides with the ship**.
     Aliens can drop bombs at random time intervals.
 
   * ### *Bombs*
