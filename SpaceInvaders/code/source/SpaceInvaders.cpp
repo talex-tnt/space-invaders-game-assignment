@@ -16,7 +16,7 @@ const spaceinv::Seconds k_targetUpdateTime{ spaceinv::Seconds(1) / k_targetRefre
 void WaitAndReset(utils::Stopwatch& stopwatch);
 }
 
-void main()
+int main()
 {
 	SpaceInvadersEngine engine;
 	spaceinv::GameContext context(engine);
@@ -28,6 +28,7 @@ void main()
 		WaitAndReset(stopwatch);
 		game.Render();
 	};
+	return EXIT_SUCCESS;
 }
 
 namespace
