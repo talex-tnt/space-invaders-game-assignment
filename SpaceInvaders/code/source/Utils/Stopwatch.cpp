@@ -1,14 +1,6 @@
 #include "Stopwatch.h"
 #include <Game/LegacyEngine/SpaceInvadersEngine.h>
 
-namespace
-{
-utils::Stopwatch::Seconds GetTime(const SpaceInvadersEngine& i_engine)
-{
-	return i_engine.GetElapsedSeconds();
-}
-}
-
 namespace utils
 {
 
