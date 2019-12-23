@@ -52,7 +52,7 @@ Create a **Space Invaders** game clone in C++ by using the supplied library `sdl
   Some of these restrictions might be released in the future.
 
 - ### **Further constraints**
-  - Exception might be disabled
+  - Exceptions will be disabled; please avoid using `std`'s exception dependent headers.
   - Please avoiding using `std`'` string` and containers; they might not not longer be available in the future.
 
 - ### **Working on the assignment** 
