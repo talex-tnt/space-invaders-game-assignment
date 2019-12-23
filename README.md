@@ -53,7 +53,7 @@ Create a **Space Invaders** game clone in C++ by using the supplied library `sdl
 
 - ### **Further constraints**
   - Exceptions will be disabled; please avoid using `std`'s exception dependent headers.
-  - Please avoiding using `std`'` string` and containers; they might not not longer be available in the future.
+  - Please avoid using `std`'` string` and containers then.
 
 - ### **Working on the assignment** 
   Set yourself a week (~20 hours) to work on this assignment as you would work on some task given to you in a working environment.
