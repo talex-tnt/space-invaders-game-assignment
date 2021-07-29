@@ -2,7 +2,7 @@
 #include <Game/LegacyEngine/SpaceInvadersEngine.h>
 
 #include <cmath>
-#include <stdio.h> 
+#include <stdio.h>
 
 namespace graphics
 {
@@ -16,7 +16,7 @@ SPrintFRender(const TextRenderer& i_textRenderer, const TextRenderer::Position& 
 
 TextRenderer::TextRenderer(const SpaceInvadersEngine& i_engine)
 	: m_engine(i_engine), m_fontSize{ SpaceInvadersEngine::FontWidth, SpaceInvadersEngine::FontRowHeight }
-{ 
+{
 }
 
 void TextRenderer::Render(const char* i_text, const Position& i_pos) const
@@ -54,8 +54,9 @@ template<class NumberT>
 typename std::enable_if<std::is_arithmetic<NumberT>::value>::type
 SPrintFRender(const TextRenderer& i_textRenderer, const TextRenderer::Position& i_pos, const TextRenderer::String& i_text, NumberT i_numbers...)
 {
-	char buffer[32];
-	_snprintf_s(buffer, _TRUNCATE, i_text.c_str(), i_numbers);
+	static const std::size_t size(32);
+	char buffer[size];
+	snprintf(buffer, size, i_text.c_str(), i_numbers);
 	i_textRenderer.Render(buffer, i_pos);
 }
 }

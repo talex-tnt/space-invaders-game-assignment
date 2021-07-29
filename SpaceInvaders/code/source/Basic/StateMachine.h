@@ -1,6 +1,7 @@
 #pragma once
-#include <xutility>
-
+#include <utility>
+#include <algorithm>
+#include <cmath>
 namespace basic
 {
 
@@ -9,21 +10,21 @@ class StateMachine final
 {
 public:
 	StateMachine(DelegateT& i_delegate, StateT<DelegateT>&& i_initialState)
-		:m_delegate(i_delegate), m_currentState(std::move(i_initialState)) 
+		:m_delegate(i_delegate), m_currentState(std::move(i_initialState))
 	{
 		((&m_delegate)->*m_currentState.Init)();
 	};
-	StateT<DelegateT>& GetCurrentState() 
-	{ 
-		return m_currentState; 
+	StateT<DelegateT>& GetCurrentState()
+	{
+		return m_currentState;
 	}
-	const StateT<DelegateT>& GetCurrentState() const 
-	{ 
-		return m_currentState; 
+	const StateT<DelegateT>& GetCurrentState() const
+	{
+		return m_currentState;
 	}
-	void Reset(StateT<DelegateT>&& i_initialState) 
-	{ 
-		m_currentState = i_initialState; 
+	void Reset(StateT<DelegateT>&& i_initialState)
+	{
+		m_currentState = i_initialState;
 		((&m_delegate)->*m_currentState.Init)();
 	}
 	void CheckCurrentState()
