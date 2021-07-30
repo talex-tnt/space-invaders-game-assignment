@@ -7,6 +7,7 @@ libs/*
 scripts/proj-*/build-*
 
 build/*
+emscripten_build/*
 
 app/*.dll
 
