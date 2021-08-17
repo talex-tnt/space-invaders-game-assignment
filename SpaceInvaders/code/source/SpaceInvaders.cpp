@@ -7,6 +7,12 @@
 #include <thread>
 #include <chrono>
 #include <algorithm>
+#include <SDL.h>
+#include <assert.h>
+
+#ifdef __EMSCRIPTEN__
+#include "emscripten.h"
+#endif
 
 namespace
 {
@@ -16,18 +22,48 @@ const spaceinv::Seconds k_targetUpdateTime{ spaceinv::Seconds(1) / k_targetRefre
 void WaitAndReset(utils::Stopwatch& stopwatch);
 }
 
+#ifdef __EMSCRIPTEN__
+struct RenderContext
+{
+	SpaceInvadersEngine* engine;
+	spaceinv::Game* game;
+};
+
+void render(void *arg)
+{
+	RenderContext* ctx = static_cast<RenderContext*>(arg);
+	if(ctx && ctx->engine && ctx->game)
+	{
+		if(ctx->engine->Run())
+		{
+			ctx->game->Update(k_targetUpdateTime);
+			ctx->game->Render();
+		} else {
+    		emscripten_cancel_main_loop();
+		}
+	}
+}
+#endif
+
 int main()
 {
 	SpaceInvadersEngine engine;
 	spaceinv::GameContext context(engine);
-	spaceinv::Game game(context);
+	spaceinv::Game si_game(context);
 	utils::Stopwatch stopwatch(engine);
+
+#ifdef __EMSCRIPTEN__
+		RenderContext ctx { &engine, &si_game};
+		const int simulate_infinite_loop = 1;
+		emscripten_set_main_loop_arg(render, &ctx, k_targetRefreshRate, simulate_infinite_loop);
+#else
 	while (engine.Run())
 	{
-		game.Update(k_targetUpdateTime);
+		si_game.Update(k_targetUpdateTime);
 		WaitAndReset(stopwatch);
-		game.Render();
+		si_game.Render();
 	};
+#endif
 	return EXIT_SUCCESS;
 }
 
