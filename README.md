@@ -1,8 +1,9 @@
 # Space Invaders: C++ Assignment
 Create a **Space Invaders** game clone in C++ by using the supplied library `sdl-engine-libs\src\SpaceInvadersEngine`.
 
-![Space Invaders Game Clone](https://github.com/talex-tnt/space-invaders-game-assignment/blob/master/space-invaders.gif)
+[DEMO Build (WASM Target)](https://talex-tnt.github.io/space-invaders/)
 
+![Space Invaders Game Clone](https://github.com/talex-tnt/space-invaders-game-assignment/blob/master/space-invaders.gif)
 
 
 
